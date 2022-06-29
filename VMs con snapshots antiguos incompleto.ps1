@@ -8,6 +8,10 @@ Connect-VIServer -Server $vcenter -User $user -Password $password
 
 $todayDate = Get-Date
 
-$snapshots = Get-VM | Get-Snapshot 
+$7daysago = $todaydate.AddDays(-7)
 
-$snapshots | Select-Object VM, created 
+$snapshotselect = $snapshots | Select-Object VM, created 
+
+$snapshots = Get-VM | Get-Snapshot | Where{$_.Created -lt $7daysago} | $snapshotselect | Export-Csv -Path c:\snapshots.csv
+
+
