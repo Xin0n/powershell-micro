@@ -12,6 +12,4 @@ $7daysago = $todaydate.AddDays(-7)
 
 $snapshotselect = $snapshots | Select-Object VM, created 
 
-$snapshots = Get-VM | Get-Snapshot | Where{$_.Created -lt $7daysago} | $snapshotselect | Export-Csv -Path c:\snapshots.csv
-
-
+$snapshots = Get-VM | Get-Snapshot | Where{$_.Created -lt $7daysago} | Select-Object VM, created | Export-Csv -Path C:\Users\data.csv
