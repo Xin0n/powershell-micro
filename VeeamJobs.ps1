@@ -1,1 +1,1 @@
-﻿Get-VBRJob
+﻿$jobs = Get-VBRJob | Select-Object Job Name, Last result | Export-Csv C:\Users\administrator\Desktop\Nitto\LastJobs.csv
